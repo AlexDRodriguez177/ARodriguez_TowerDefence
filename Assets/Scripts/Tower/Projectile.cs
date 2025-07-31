@@ -15,9 +15,9 @@ public abstract class Projectile : MonoBehaviour
     {
         if (target != null)
         {
-        Vector3 direction = (target.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
-        transform.forward = direction; 
+            Vector3 direction = (target.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+            transform.forward = direction;
         }
         else
         {
@@ -33,12 +33,12 @@ public abstract class Projectile : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.transform==target)
+        if (other.transform == target)
         {
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
-                
+
                 Destroy(enemy.gameObject);
             }
             Destroy(gameObject);
