@@ -3997,6 +3997,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8496427347261487581, guid: 5eb538651b7343848b62f2908462add9, type: 3}
   m_PrefabInstance: {fileID: 1021998327}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1031457967 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1329380249762036386, guid: 3082a2763c4e259419861aaf167c1e8d, type: 3}
+  m_PrefabInstance: {fileID: 520159114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1045681330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8073,6 +8078,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireCooldown: 1
   projectilePrefab: {fileID: 500042936275251588, guid: aff6c0c936254d041bf01b4e6460d4f8, type: 3}
+  towerWeaponRotate: {fileID: 520159115}
+  rotationSpeed: 10
+  arrowSpawnPoint: {fileID: 1031457967}
 --- !u!135 &2008802961
 SphereCollider:
   m_ObjectHideFlags: 0

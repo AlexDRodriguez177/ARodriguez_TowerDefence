@@ -31,7 +31,7 @@ public abstract class Tower : MonoBehaviour
 
     }
 
-    protected void RotateTowerWeapon(Transform enemy)
+    protected virtual void RotateTowerWeapon(Transform enemy)
     {
         Vector3 targetPosition = enemy.position - towerWeaponRotate.position;
         Quaternion targetRotation = Quaternion.LookRotation(targetPosition);

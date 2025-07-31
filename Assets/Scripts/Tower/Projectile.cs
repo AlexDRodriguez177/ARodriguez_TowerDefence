@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public abstract class Projectile : MonoBehaviour
 {
-    [SerializeField] private int damage = 10;
-    [SerializeField] private float speed = 20f;
-    [SerializeField] private float lifetime = 3f;
-    private Transform target;
-    private void Start()
+    [SerializeField] protected int damage = 10;
+    [SerializeField] protected float speed = 20f;
+    [SerializeField] protected float lifetime = 3f;
+    protected private Transform target;
+    protected virtual void Start()
     {
         Destroy(gameObject, lifetime);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (target != null)
         {
@@ -26,12 +26,12 @@ public class Projectile : MonoBehaviour
 
     }
 
-    public void SetTarget(Transform inputTarget)
+    public virtual void SetTarget(Transform inputTarget)
     {
         target = inputTarget;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.transform==target)
         {
