@@ -79,7 +79,10 @@ PrefabInstance:
       addedObject: {fileID: 1177223067975444471}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: feaf8686d74ccbe4db3637df6f9bebbc, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -1645340054960123912}
+      addedObject: {fileID: -8959514795530689570}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: feaf8686d74ccbe4db3637df6f9bebbc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6403504785686941060}
   m_SourcePrefab: {fileID: 100100000, guid: feaf8686d74ccbe4db3637df6f9bebbc, type: 3}
 --- !u!1 &3047053088215847412 stripped
 GameObject:
@@ -145,8 +148,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &-1645340054960123912
-CapsuleCollider:
+--- !u!65 &-8959514795530689570
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -160,11 +163,36 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
+  serializedVersion: 3
+  m_Size: {x: 0.125, y: 0.125, z: 0.125}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &-6403504785686941060
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3047053088215847412}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

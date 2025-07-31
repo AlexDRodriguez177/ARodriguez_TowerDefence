@@ -10,7 +10,7 @@ public class BalistaTower : Tower
     {
         if (projectilePrefab != null)
         {
-            GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            GameObject projectileInstance = Instantiate(projectilePrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
             projectileInstance.GetComponent<Projectile>().SetTarget(target.transform);
         }
     }

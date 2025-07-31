@@ -10,32 +10,47 @@ public abstract class Tower : MonoBehaviour
     protected List<Enemy> enemiesInRange = new List<Enemy>();
 
     [SerializeField] protected GameObject projectilePrefab;
+    [SerializeField] protected Transform towerWeaponRotate;
+    [SerializeField] protected float rotationSpeed = 10f;
+    [SerializeField] protected Transform arrowSpawnPoint;
 
     protected virtual void Update()
     {
         currentFireCooldown -= Time.deltaTime;
         Enemy closestEnemy = GetClosestEnemy();
-        if (closestEnemy != null && currentFireCooldown <= 0.0f)
+        if (closestEnemy != null)
         {
-            FireAt(closestEnemy);
-            currentFireCooldown = fireCooldown;
+            RotateTowerWeapon(closestEnemy.transform);
+            if (closestEnemy != null && currentFireCooldown <= 0.0f)
+            {
+                FireAt(closestEnemy);
+                currentFireCooldown = fireCooldown;
+            }
         }
 
+
+    }
+
+    protected void RotateTowerWeapon(Transform enemy)
+    {
+        Vector3 targetPosition = enemy.position - towerWeaponRotate.position;
+        Quaternion targetRotation = Quaternion.LookRotation(targetPosition);
+        towerWeaponRotate.rotation = Quaternion.Slerp(towerWeaponRotate.rotation, targetRotation, Time.deltaTime * rotationSpeed);
     }
 
     protected virtual void FireAt(Enemy target)
     {
         if (projectilePrefab != null)
         {
-            GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            projectileInstance.GetComponent<Projectile>().SetTarget(target.transform);   
+            GameObject projectileInstance = Instantiate(projectilePrefab, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+            projectileInstance.GetComponent<Projectile>().SetTarget(target.transform);
         }
     }
 
     private Enemy GetClosestEnemy()
     {
 
-        for(int i = enemiesInRange.Count - 1; i >= 0; i--)
+        for (int i = enemiesInRange.Count - 1; i >= 0; i--)
         {
             if (enemiesInRange[i] == null)
             {
