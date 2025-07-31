@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     private Animator enemyAnimation;
     [SerializeField] private Transform endPoint;
     [SerializeField] private string walkingBool = "IsWalking";
+    [SerializeField] private int damageAmount;
 
     private void Awake()
     {
@@ -32,10 +33,17 @@ public class Enemy : MonoBehaviour
         {
             if (!agent.hasPath || agent.pathStatus == NavMeshPathStatus.PathComplete)
             {
-                enemyAnimation.SetBool(walkingBool, false);
+                ReachedEnd();
             }
         }
 
+    }
+
+    private void ReachedEnd()
+    {
+        enemyAnimation.SetBool(walkingBool, false);
+        GameManager.Instance.playerHealth.TakeDamage(damageAmount);
+        Destroy(gameObject);
     }
 }
 

@@ -9,7 +9,7 @@ public abstract class Tower : MonoBehaviour
     protected float currentFireCooldown = 0.0f;
     protected List<Enemy> enemiesInRange = new List<Enemy>();
 
-    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] protected GameObject projectilePrefab;
 
     protected virtual void Update()
     {
@@ -28,7 +28,7 @@ public abstract class Tower : MonoBehaviour
         if (projectilePrefab != null)
         {
             GameObject projectileInstance = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-            projectileInstance.GetComponent<Projectle>().SetTarget(target.transform);   
+            projectileInstance.GetComponent<Projectile>().SetTarget(target.transform);   
         }
     }
 
