@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class FreezeTower : MonoBehaviour
+public class FreezeTower : Tower
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private ParticleSystem freezeEffect;
+
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void FireAt(Enemy target)
     {
-        
+        base.FireAt(target);
+
+        if (freezeEffect != null)
+        {
+            freezeEffect.Play();
+        }
     }
 }

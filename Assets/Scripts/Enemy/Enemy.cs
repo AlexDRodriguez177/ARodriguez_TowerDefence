@@ -13,13 +13,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int maxHealth = 15;
     private int currentHealth;
 
-    private bool isBurning = false;
+    [SerializeField] public float baseSpeed;
+    [SerializeField] private float currentSpeed;
+    [SerializeField] private float immunityFromEffects = 2f;
 
+    private float animationSpeed = .5f;
+    private bool isBurning = false;
+    private bool canBeSlowedAgain = true;
+    private bool maxTowerAchived = false;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimation = GetComponent<Animator>();
         currentHealth = maxHealth;
+
+        baseSpeed = agent.speed;
+        currentSpeed = baseSpeed;
     }
 
     void Start()
@@ -71,11 +80,11 @@ public class Enemy : MonoBehaviour
     {
         if (isBurning)
         {
-            yield break; 
+            yield break;
         }
         isBurning = true;
         float elapsedTime = 0f;
-        
+
         while (elapsedTime < burnDuration)
         {
             EnemyTakeDamage(burnDamage);
@@ -83,6 +92,46 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(burnTickRate);
         }
         isBurning = false;
+    }
+
+    public void SetSpeed(float speed)
+    {
+        currentSpeed = speed;
+        agent.speed = currentSpeed;
+    }
+
+    public void ResetSpeed()
+    {
+        SetSpeed(baseSpeed);
+    }
+
+    public void FreezeMaxTowerAchived(bool value)
+    {
+        maxTowerAchived = value;
+    }
+
+    public IEnumerator EnemyApplySlow(float slowSpeed, float duration)
+    {
+        if (!canBeSlowedAgain)
+        {
+            yield break;
+        }
+        canBeSlowedAgain = false;
+        SetSpeed(baseSpeed * slowSpeed);
+        if (maxTowerAchived)
+        {
+            enemyAnimation.SetBool(walkingBool, false);
+        }
+        else
+        {
+            enemyAnimation.SetBool(walkingBool, true);
+            enemyAnimation.speed = animationSpeed;
+        }
+        yield return new WaitForSeconds(duration);
+        ResetSpeed();
+        yield return new WaitForSeconds(immunityFromEffects);
+        enemyAnimation.speed = 1f;
+        canBeSlowedAgain = true;
     }
 }
 

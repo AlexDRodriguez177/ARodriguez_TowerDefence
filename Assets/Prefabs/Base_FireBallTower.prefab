@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa80d88b86af6e2478183d6e7bb7b7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireCooldown: 8
+  fireCooldown: 5
   projectilePrefab: {fileID: 5618933435505840219, guid: 07270158e893de74784719f4b89972f9, type: 3}
   towerWeaponRotate: {fileID: 3758401450954716768}
   rotationSpeed: 10
