@@ -16,8 +16,8 @@ public class FireBallTower : Tower
     /// </summary>
     protected override void FireAt(Enemy target)
     {
+       
         base.FireAt(target);
-        fireEffect.Play();
         
     }
 }

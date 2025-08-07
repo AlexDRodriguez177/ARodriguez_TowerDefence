@@ -126,6 +126,7 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   walkingBool: IsWalking
   damageAmount: 5
+  maxHealth: 15
 --- !u!95 &1177223067975444471
 Animator:
   serializedVersion: 7

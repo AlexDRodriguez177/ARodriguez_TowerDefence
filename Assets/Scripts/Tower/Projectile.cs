@@ -39,7 +39,7 @@ public abstract class Projectile : MonoBehaviour
             if (enemy != null)
             {
 
-                Destroy(enemy.gameObject);
+                enemy.EnemyTakeDamage(damage);
             }
             Destroy(gameObject);
         }

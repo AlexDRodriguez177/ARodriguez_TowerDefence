@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,10 +10,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private string walkingBool = "IsWalking";
     [SerializeField] private int damageAmount;
 
+    [SerializeField] private int maxHealth = 15;
+    private int currentHealth;
+
+    private bool isBurning = false;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimation = GetComponent<Animator>();
+        currentHealth = maxHealth;
     }
 
     void Start()
@@ -44,6 +51,38 @@ public class Enemy : MonoBehaviour
         enemyAnimation.SetBool(walkingBool, false);
         GameManager.Instance.playerHealth.TakeDamage(damageAmount);
         Destroy(gameObject);
+    }
+
+    public void EnemyTakeDamage(int incomingDamage)
+    {
+        currentHealth -= incomingDamage;
+        Debug.Log(currentHealth);
+        if (currentHealth <= 0)
+        {
+            if (agent != null && agent.isOnNavMesh)
+            {
+                agent.isStopped = true;
+            }
+            Destroy(gameObject);
+        }
+    }
+
+    public IEnumerator ApplyBurn(int burnDamage, float burnDuration, float burnTickRate)
+    {
+        if (isBurning)
+        {
+            yield break; 
+        }
+        isBurning = true;
+        float elapsedTime = 0f;
+        
+        while (elapsedTime < burnDuration)
+        {
+            EnemyTakeDamage(burnDamage);
+            elapsedTime += burnTickRate;
+            yield return new WaitForSeconds(burnTickRate);
+        }
+        isBurning = false;
     }
 }
 

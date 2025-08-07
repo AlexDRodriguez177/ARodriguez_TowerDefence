@@ -4,11 +4,11 @@ public class FireBall : Projectile
 {
     [SerializeField] private float explosionDelay = 1f;
     [SerializeField] private float explosionRadius = 3f;
-    [SerializeField] private int fireDamage = 15;
+    [SerializeField] private int burnDamage = 2;
+    [SerializeField] private float burnDuration = 4f;
+    [SerializeField] private float burnTickRate = 1f;
     private bool hasExploded = false;
-    /// <summary>
-    /// 
-    /// </summary>
+
     protected override void Update()
     {
         if (hasExploded)
@@ -42,10 +42,11 @@ public class FireBall : Projectile
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (var enemies in hits)
         {
-            Enemy nearbyEnemy = enemies.GetComponent<Enemy>();
-            if (nearbyEnemy != null)
+            Enemy enemy = enemies.GetComponent<Enemy>();
+            if (enemy != null)
             {
-                Destroy(nearbyEnemy.gameObject);
+                enemy.EnemyTakeDamage(damage);
+                enemy.StartCoroutine(enemy.ApplyBurn(burnDamage, burnDuration, burnTickRate));
             }
         }
 

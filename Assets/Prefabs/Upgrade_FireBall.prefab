@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5618933435505840219
+--- !u!1 &4979765609185310306
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5094035846593792737}
-  - component: {fileID: 8151089856204457284}
-  - component: {fileID: 6267473840420139406}
-  - component: {fileID: 3560572281443533438}
-  - component: {fileID: 89131503109492052}
+  - component: {fileID: 9088608717580134255}
+  - component: {fileID: 4112267004923827499}
+  - component: {fileID: 6167216668517991840}
+  - component: {fileID: 5759943447183481047}
+  - component: {fileID: 5806219129991402814}
   m_Layer: 0
-  m_Name: Fire Cannon Ball
+  m_Name: Upgrade_FireBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5094035846593792737
+--- !u!4 &9088608717580134255
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618933435505840219}
+  m_GameObject: {fileID: 4979765609185310306}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.405423, y: 0.3399998, z: 4.126883}
+  m_LocalPosition: {x: 4.0832787, y: 0.3399998, z: 4.7886353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8151089856204457284
+--- !u!33 &4112267004923827499
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618933435505840219}
+  m_GameObject: {fileID: 4979765609185310306}
   m_Mesh: {fileID: -2383952699438097375, guid: c102257732162a44788717fadedf8b2c, type: 3}
---- !u!23 &6267473840420139406
+--- !u!23 &6167216668517991840
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618933435505840219}
+  m_GameObject: {fileID: 4979765609185310306}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -88,33 +88,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3560572281443533438
+--- !u!114 &5759943447183481047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618933435505840219}
+  m_GameObject: {fileID: 4979765609185310306}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11695f679efd3e5419e6e910cf0ba3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 20
   speed: 20
   lifetime: 3
   explosionDelay: 1
-  explosionRadius: 3
-  burnDamage: 2
+  explosionRadius: 4
+  burnDamage: 4
   burnDuration: 4
   burnTickRate: 1
---- !u!135 &89131503109492052
+--- !u!135 &5806219129991402814
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618933435505840219}
+  m_GameObject: {fileID: 4979765609185310306}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

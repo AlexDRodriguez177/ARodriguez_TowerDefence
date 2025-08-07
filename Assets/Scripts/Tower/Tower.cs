@@ -4,7 +4,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class Tower : MonoBehaviour
 {
-    public float fireCooldown = 1.0f;
+    public float fireCooldown = 8.0f;
 
     protected float currentFireCooldown = 0.0f;
     protected List<Enemy> enemiesInRange = new List<Enemy>();
@@ -14,17 +14,26 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] protected float rotationSpeed = 10f;
     [SerializeField] protected Transform arrowSpawnPoint;
 
+
     protected virtual void Update()
     {
         currentFireCooldown -= Time.deltaTime;
+        if (currentFireCooldown < 0f)
+        {
+            currentFireCooldown = 0f;
+        }
+
+
         Enemy closestEnemy = GetClosestEnemy();
         if (closestEnemy != null)
         {
             RotateTowerWeapon(closestEnemy.transform);
             if (closestEnemy != null && currentFireCooldown <= 0.0f)
             {
+
                 FireAt(closestEnemy);
                 currentFireCooldown = fireCooldown;
+
             }
         }
 
