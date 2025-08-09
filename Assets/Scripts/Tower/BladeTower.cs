@@ -1,16 +1,29 @@
 using UnityEngine;
-
+using System.Collections;
 public class BladeTower : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private int bladeDamage;
+    [SerializeField] private float timeBeforeNextStrike = 1f;
+    private bool canDealDamage = true;
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (!canDealDamage)
+        {
+            return;
+        }
+
+        Enemy enemy = other.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            enemy.EnemyTakeDamage(bladeDamage);
+            StartCoroutine(CoolDownTimer());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator CoolDownTimer()
     {
-        
+        canDealDamage = false;
+        yield return new WaitForSeconds(timeBeforeNextStrike);
+        canDealDamage = true;
     }
 }

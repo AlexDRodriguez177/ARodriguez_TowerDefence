@@ -3,7 +3,7 @@ using static UnityEngine.GraphicsBuffer;
 using System.Collections;
 public class FreezeProjectile : Projectile
 {
-    [SerializeField] private float explosionRadius = 3f;
+    [SerializeField] private float captureRadius = 3f;
     [SerializeField] private float slowFactor = 0.5f;
     [SerializeField] private float slowDuration = 2f;
     private bool hasExploded = false;
@@ -28,7 +28,7 @@ public class FreezeProjectile : Projectile
     private void FreezeEnemies()
     {
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
+        Collider[] hits = Physics.OverlapSphere(transform.position, captureRadius);
         foreach (var hit in hits)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
