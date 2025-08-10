@@ -4,8 +4,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private Animator enemyAnimation;
+    [SerializeField] private NavMeshAgent agent;
+
+    public Animator enemyAnimation;
     [SerializeField] private Transform endPoint;
     [SerializeField] private string walkingBool = "IsWalking";
     [SerializeField] private int damageAmount;
@@ -13,13 +14,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int maxHealth = 15;
     private int currentHealth;
 
+    [SerializeField] private int coinsGivenToPlayer = 10;
+
     [SerializeField] public float baseSpeed;
     [SerializeField] private float currentSpeed;
-    [SerializeField] private float immunityFromEffects = 2f;
 
-    private float animationSpeed = .5f;
-    private bool isBurning = false;
-    private bool canBeSlowedAgain = true;
+    public float animationSpeed = .5f;
     private bool maxTowerAchived = false;
     private void Awake()
     {
@@ -40,9 +40,8 @@ public class Enemy : MonoBehaviour
     {
         endPoint = inputEndPoint;
         agent.SetDestination(endPoint.position);
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
@@ -73,26 +72,10 @@ public class Enemy : MonoBehaviour
                 agent.isStopped = true;
             }
             Destroy(gameObject);
+            GameManager.Instance.AddCoins(coinsGivenToPlayer);
         }
     }
 
-    public IEnumerator ApplyBurn(int burnDamage, float burnDuration, float burnTickRate)
-    {
-        if (isBurning)
-        {
-            yield break;
-        }
-        isBurning = true;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < burnDuration)
-        {
-            EnemyTakeDamage(burnDamage);
-            elapsedTime += burnTickRate;
-            yield return new WaitForSeconds(burnTickRate);
-        }
-        isBurning = false;
-    }
 
     public void SetSpeed(float speed)
     {
@@ -110,28 +93,5 @@ public class Enemy : MonoBehaviour
         maxTowerAchived = value;
     }
 
-    public IEnumerator EnemyApplySlow(float slowSpeed, float duration)
-    {
-        if (!canBeSlowedAgain)
-        {
-            yield break;
-        }
-        canBeSlowedAgain = false;
-        SetSpeed(baseSpeed * slowSpeed);
-        if (maxTowerAchived)
-        {
-            enemyAnimation.SetBool(walkingBool, false);
-        }
-        else
-        {
-            enemyAnimation.SetBool(walkingBool, true);
-            enemyAnimation.speed = animationSpeed;
-        }
-        yield return new WaitForSeconds(duration);
-        ResetSpeed();
-        yield return new WaitForSeconds(immunityFromEffects);
-        enemyAnimation.speed = 1f;
-        canBeSlowedAgain = true;
-    }
 }
 

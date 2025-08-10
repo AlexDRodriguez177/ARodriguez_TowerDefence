@@ -13,7 +13,7 @@ public class FireBall : Projectile
     {
         if (hasExploded)
         {
-            return; 
+            return;
         }
         base.Update();
     }
@@ -40,13 +40,17 @@ public class FireBall : Projectile
         yield return new WaitForSeconds(explosionDelay);
 
         Collider[] hits = Physics.OverlapSphere(transform.position, explosionRadius);
-        foreach (var enemies in hits)
+        foreach (var hit in hits)
         {
-            Enemy enemy = enemies.GetComponent<Enemy>();
-            if (enemy != null)
+            EnemyStatusEffect statusHandler = hit.GetComponent<EnemyStatusEffect>();
+            if (statusHandler != null)
             {
-                enemy.EnemyTakeDamage(damage);
-                enemy.StartCoroutine(enemy.ApplyBurn(burnDamage, burnDuration, burnTickRate));
+                Enemy enemy = hit.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.EnemyTakeDamage(damage);
+                }
+                statusHandler.StartCoroutine(statusHandler.ApplyBurn(burnDamage, burnDuration, burnTickRate));
             }
         }
 

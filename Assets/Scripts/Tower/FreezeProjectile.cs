@@ -27,17 +27,15 @@ public class FreezeProjectile : Projectile
 
     private void FreezeEnemies()
     {
-
         Collider[] hits = Physics.OverlapSphere(transform.position, captureRadius);
         foreach (var hit in hits)
         {
-            Enemy enemy = hit.GetComponent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.StartCoroutine(enemy.EnemyApplySlow(slowFactor, slowDuration));
-            }
+            EnemyStatusEffect statusHandler = hit.GetComponent<EnemyStatusEffect>();
+            if (statusHandler != null)
+                statusHandler.StartCoroutine(statusHandler.ApplySlow(slowFactor, slowDuration));
         }
 
         Destroy(gameObject);
     }
 }
+
