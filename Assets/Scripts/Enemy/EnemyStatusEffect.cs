@@ -4,7 +4,6 @@ using System.Collections;
 public class EnemyStatusEffect : MonoBehaviour
 {
     private Enemy enemy;
-    [SerializeField] private float immunityFromEffects = 2f;
 
     private void Awake()
     {

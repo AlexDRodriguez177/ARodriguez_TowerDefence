@@ -2830,21 +2830,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelWaveData:
   - EnemyData:
-    - EnemyToSpawn: {fileID: 3047053088215847412, guid: 1b935200e5f1cfd4aa78d85158aef04c, type: 3}
-      TimeBeforeSpawn: 1
-      SpawnPoint: {fileID: 885632075}
-      EndPoint: {fileID: 215089124}
-    - EnemyToSpawn: {fileID: 4974990838418801315, guid: 907ca5de5c4689a4288640337b86258f, type: 3}
-      TimeBeforeSpawn: 1
-      SpawnPoint: {fileID: 885632075}
-      EndPoint: {fileID: 215089124}
-    - EnemyToSpawn: {fileID: 2808448459862684891, guid: b381f406b6bacaf4b8097f83eff44822, type: 3}
+    - EnemyToSpawn: {fileID: 6128971862182006600, guid: 860eea40115786e4ab54ec9086446c9e, type: 3}
       TimeBeforeSpawn: 1
       SpawnPoint: {fileID: 885632075}
       EndPoint: {fileID: 215089124}
     - EnemyToSpawn: {fileID: 6128971862182006600, guid: 860eea40115786e4ab54ec9086446c9e, type: 3}
       TimeBeforeSpawn: 1
       SpawnPoint: {fileID: 885632075}
+      EndPoint: {fileID: 215089124}
+    - EnemyToSpawn: {fileID: 6128971862182006600, guid: 860eea40115786e4ab54ec9086446c9e, type: 3}
+      TimeBeforeSpawn: 1
+      SpawnPoint: {fileID: 885632075}
+      EndPoint: {fileID: 215089124}
+    - EnemyToSpawn: {fileID: 6128971862182006600, guid: 860eea40115786e4ab54ec9086446c9e, type: 3}
+      TimeBeforeSpawn: 1
+      SpawnPoint: {fileID: 1763300738}
       EndPoint: {fileID: 215089124}
     TimeBeforeWaves: 3
 --- !u!4 &710107012
@@ -5910,70 +5910,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8496427347261487581, guid: 5eb538651b7343848b62f2908462add9, type: 3}
   m_PrefabInstance: {fileID: 1406165475}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1417584076
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1417584078}
-  - component: {fileID: 1417584077}
-  m_Layer: 6
-  m_Name: Flying Nav Mesh Surface
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1417584077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417584076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_AgentTypeID: 0
-  m_CollectObjects: 0
-  m_Size: {x: 10, y: 10, z: 10}
-  m_Center: {x: 0, y: 2, z: 0}
-  m_LayerMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGeometry: 1
-  m_DefaultArea: 0
-  m_GenerateLinks: 1
-  m_IgnoreNavMeshAgent: 1
-  m_IgnoreNavMeshObstacle: 1
-  m_OverrideTileSize: 0
-  m_TileSize: 256
-  m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.083333336
-  m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 25ddcb351cccd214198dce8b77d54042, type: 2}
-  m_BuildHeightMesh: 0
---- !u!4 &1417584078
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417584076}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33, y: 0.17, z: 0.02}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1437764955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7260,6 +7196,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8496427347261487581, guid: 5eb538651b7343848b62f2908462add9, type: 3}
   m_PrefabInstance: {fileID: 1741711474}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1763300737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763300738}
+  m_Layer: 0
+  m_Name: Flying_Enemy_Start_Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1763300738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763300737}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.28, y: 1.69, z: -0.58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1778251577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8945,7 +8912,6 @@ SceneRoots:
   - {fileID: 904195853}
   - {fileID: 2097064110}
   - {fileID: 620406211}
-  - {fileID: 1417584078}
   - {fileID: 710107012}
   - {fileID: 1925185289}
   - {fileID: 1895403488}
@@ -8953,3 +8919,4 @@ SceneRoots:
   - {fileID: 297945294}
   - {fileID: 618458989}
   - {fileID: 1327574699}
+  - {fileID: 1763300738}

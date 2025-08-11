@@ -2,26 +2,27 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
-
+    [SerializeField] protected NavMeshAgent agent;
     public Animator enemyAnimation;
-    [SerializeField] private Transform endPoint;
-    [SerializeField] private string walkingBool = "IsWalking";
-    [SerializeField] private int damageAmount;
 
-    [SerializeField] private int maxHealth = 15;
-    private int currentHealth;
+    [SerializeField] protected Transform endPoint;
+    [SerializeField] protected string walkingBool = "IsWalking";
+    [SerializeField] protected int damageAmount;
 
-    [SerializeField] private int coinsGivenToPlayer = 10;
+    [SerializeField] protected int maxHealth = 15;
+    protected int currentHealth;
+
+    [SerializeField] protected int coinsGivenToPlayer = 10;
 
     [SerializeField] public float baseSpeed;
-    [SerializeField] private float currentSpeed;
+    [SerializeField] protected float currentSpeed;
 
     public float animationSpeed = .5f;
-    private bool maxTowerAchived = false;
-    private void Awake()
+    protected bool maxTowerAchived = false;
+
+    protected virtual void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         enemyAnimation = GetComponent<Animator>();
@@ -31,18 +32,18 @@ public class Enemy : MonoBehaviour
         currentSpeed = baseSpeed;
     }
 
-    void Start()
+    protected virtual void Start()
     {
         enemyAnimation.SetBool(walkingBool, true);
     }
 
-    public void Initialized(Transform inputEndPoint)
+    public virtual void Initialized(Transform inputEndPoint)
     {
         endPoint = inputEndPoint;
         agent.SetDestination(endPoint.position);
-
     }
-    void Update()
+
+    protected virtual void Update()
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
@@ -51,17 +52,16 @@ public class Enemy : MonoBehaviour
                 ReachedEnd();
             }
         }
-
     }
 
-    private void ReachedEnd()
+    protected virtual void ReachedEnd()
     {
         enemyAnimation.SetBool(walkingBool, false);
         GameManager.Instance.playerHealth.TakeDamage(damageAmount);
         Destroy(gameObject);
     }
 
-    public void EnemyTakeDamage(int incomingDamage)
+    public virtual void EnemyTakeDamage(int incomingDamage)
     {
         currentHealth -= incomingDamage;
         Debug.Log(currentHealth);
@@ -76,22 +76,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-    public void SetSpeed(float speed)
+    public virtual void SetSpeed(float speed)
     {
         currentSpeed = speed;
         agent.speed = currentSpeed;
     }
 
-    public void ResetSpeed()
+    public virtual void ResetSpeed()
     {
         SetSpeed(baseSpeed);
     }
 
-    public void FreezeMaxTowerAchived(bool value)
+    public virtual void FreezeMaxTowerAchived(bool maxAchived)
     {
-        maxTowerAchived = value;
+        maxTowerAchived = maxAchived;
     }
-
 }
 

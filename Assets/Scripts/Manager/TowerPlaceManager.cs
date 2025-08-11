@@ -54,6 +54,7 @@ public class TowerPlaceManager : MonoBehaviour
                 Destroy(towerPreview);
             }
             towerPreview = Instantiate(currentTowerToSpawn);
+            currentTowerToSpawn.GetComponent<MonoBehaviour>().enabled = false;
         }
 
     }
@@ -66,6 +67,7 @@ public class TowerPlaceManager : MonoBehaviour
             Instantiate(currentTowerToSpawn, towerPreview.transform.position, Quaternion.identity);
             Destroy(towerPreview);
             currentTowerToSpawn = null;
+            currentTowerToSpawn.GetComponent<MonoBehaviour>().enabled = true;
         }
     }
 }
