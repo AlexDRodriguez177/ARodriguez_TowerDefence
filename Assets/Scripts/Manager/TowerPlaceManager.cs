@@ -6,7 +6,7 @@ public class TowerPlaceManager : MonoBehaviour
     public Camera MainCamera;
     public LayerMask TileLayer;
     public InputAction PlaceTowerAction;
-    [SerializeField] private float towerPlacementHeight = 0.5f;
+    [SerializeField] private float towerPlacementHeight = -1f;
     [SerializeField] private bool isPlacingTower = false;
     private GameObject currentTowerToSpawn;
     private GameObject towerPreview;
@@ -53,21 +53,37 @@ public class TowerPlaceManager : MonoBehaviour
             {
                 Destroy(towerPreview);
             }
+
             towerPreview = Instantiate(currentTowerToSpawn);
-            currentTowerToSpawn.GetComponent<MonoBehaviour>().enabled = false;
+
+            
+            var baseTowerScript = towerPreview.GetComponent<Tower>();
+            if (baseTowerScript != null)
+            {
+                baseTowerScript.enabled = false;
+            }
+
+            
+            var bladeTowerScript = towerPreview.GetComponent<BladeTower>();
+            if (bladeTowerScript != null)
+            {
+                bladeTowerScript.enabled = false;
+            }
+
         }
 
     }
+
 
     private void OnPlaceTower(InputAction.CallbackContext context)
     {
         if (isPlacingTower && isTileSelected)
         {
             isPlacingTower = false;
-            Instantiate(currentTowerToSpawn, towerPreview.transform.position, Quaternion.identity);
+            Vector3 spawnPosition = towerPreview.transform.position;
+            Instantiate(currentTowerToSpawn, spawnPosition, Quaternion.identity);
             Destroy(towerPreview);
             currentTowerToSpawn = null;
-            currentTowerToSpawn.GetComponent<MonoBehaviour>().enabled = true;
         }
     }
 }
