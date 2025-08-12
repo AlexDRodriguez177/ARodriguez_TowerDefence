@@ -400,7 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b1afd7aeb8a164c993386600a4252a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  immunityFromEffects: 2
 --- !u!114 &4065810236284597744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,7 +417,7 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   walkingBool: IsWalking
   damageAmount: 25
-  maxHealth: 30
+  maxHealth: 50
   coinsGivenToPlayer: 25
   baseSpeed: 0
   currentSpeed: 0

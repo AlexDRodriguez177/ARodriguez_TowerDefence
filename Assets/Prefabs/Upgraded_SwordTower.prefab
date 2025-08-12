@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bladeRotatePoint: {fileID: 277099656331242174}
-  rotationSpeed: 120
+  rotationSpeed: 140
 --- !u!114 &8363092308039396186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeDamage: 30
   timeBeforeNextStrike: 0.25
+  cost: 0
 --- !u!65 &5111607775606095966
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -823,7 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bladeRotatePoint: {fileID: 277099656331242174}
-  rotationSpeed: 120
+  rotationSpeed: 140
 --- !u!114 &4672530768528311109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,6 +839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bladeDamage: 30
   timeBeforeNextStrike: 0.25
+  cost: 0
 --- !u!65 &5372407158432031541
 BoxCollider:
   m_ObjectHideFlags: 0

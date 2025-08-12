@@ -191,14 +191,12 @@ MonoBehaviour:
   endPoint: {fileID: 0}
   walkingBool: IsWalking
   damageAmount: 25
-  maxHealth: 15
+  maxHealth: 25
   coinsGivenToPlayer: 20
   baseSpeed: 0
   currentSpeed: 0
   animationSpeed: 0.5
   flyingSpeed: 5
-  flyingHeight: 5
-  rotationSpeed: 5
 --- !u!195 &-671369830558858462
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -209,7 +207,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.50217336
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

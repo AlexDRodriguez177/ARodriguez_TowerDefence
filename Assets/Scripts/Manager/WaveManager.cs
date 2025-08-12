@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 [System.Serializable]
 public struct SpawnData
 {
@@ -18,10 +19,13 @@ public struct WaveData
     public List<SpawnData> EnemyData;
     public float TimeBeforeWaves;
 }
+
 public class WaveManager : MonoBehaviour
 {
     public List<WaveData> LevelWaveData;
-
+    public TextMeshProUGUI roundTextDisplay;
+    public int totalRounds;
+    private int currentRoundNumber = 0;
     private void Start()
     {
         StartLevel();
@@ -48,6 +52,8 @@ public class WaveManager : MonoBehaviour
             
             foreach (SpawnData currentEnemyToSpawn in currentWave.EnemyData)
             {
+                currentRoundNumber++;
+                UpdateRoundUI();
                 yield return StartCoroutine(SpawnEnemies(currentEnemyToSpawn));
             }
 
@@ -59,5 +65,10 @@ public class WaveManager : MonoBehaviour
         GameObject enemyInstance = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
         Enemy enemy = enemyInstance.GetComponent<Enemy>();
         enemy.Initialized(endPoint);
+    }
+
+    private void UpdateRoundUI()
+    {
+        roundTextDisplay.text = "Round "+ currentRoundNumber.ToString() + "/ "+ totalRounds.ToString();
     }
 }
