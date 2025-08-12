@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - AltNavMesh
+  - EndPoint
+  - UpgradePanel
   layers:
   - Default
   - TransparentFX

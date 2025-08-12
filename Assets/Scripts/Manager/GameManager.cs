@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public Health playerHealth;
 
     [SerializeField] private TextMeshProUGUI coinText;
-    private int coins = 0;
+    public int coins = 15;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -32,6 +33,11 @@ public class GameManager : MonoBehaviour
     public void AddCoins(int amount)
     {
         coins += amount;
+        UpdateCoinText();
+    }
+    public void SpendCoins(int amount)
+    {
+        coins -= amount;
         UpdateCoinText();
     }
 

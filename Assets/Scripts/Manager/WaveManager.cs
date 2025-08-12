@@ -6,6 +6,7 @@ using UnityEngine;
 public struct SpawnData
 {
     public GameObject EnemyToSpawn;
+    public int NumberToSpawn;
     public float TimeBeforeSpawn;
     public Transform SpawnPoint;
     public Transform EndPoint;
@@ -31,20 +32,26 @@ public class WaveManager : MonoBehaviour
         StartCoroutine(StartWave());
     }
 
+    IEnumerator SpawnEnemies(SpawnData spawnData)
+    {
+        for (int i = 0; i < spawnData.NumberToSpawn; i++)
+        {
+            SpawnEnemy(spawnData.EnemyToSpawn, spawnData.SpawnPoint, spawnData.EndPoint);
+            yield return new WaitForSeconds(spawnData.TimeBeforeSpawn);
+        }
+    }
     IEnumerator StartWave()
     {
         foreach (WaveData currentWave in LevelWaveData)
         {
+            yield return new WaitForSeconds(currentWave.TimeBeforeWaves);
+            
             foreach (SpawnData currentEnemyToSpawn in currentWave.EnemyData)
             {
-                yield return new WaitForSeconds(currentEnemyToSpawn.TimeBeforeSpawn);
-
-                SpawnEnemy(currentEnemyToSpawn.EnemyToSpawn, currentEnemyToSpawn.SpawnPoint, currentEnemyToSpawn.EndPoint);
-
+                yield return StartCoroutine(SpawnEnemies(currentEnemyToSpawn));
             }
+
         }
-
-
 
     }
     public void SpawnEnemy(GameObject enemyPrefab, Transform spawnPoint, Transform endPoint)

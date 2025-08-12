@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class TowerPlaceManager : MonoBehaviour
@@ -11,7 +12,9 @@ public class TowerPlaceManager : MonoBehaviour
     private GameObject currentTowerToSpawn;
     private GameObject towerPreview;
     private Vector3 towerPlacmentPosition;
-    private bool isTileSelected=false;
+    private bool isTileSelected = false;
+
+    [SerializeField] private int towerCost;
     private void Update()
     {
         if (isPlacingTower)
@@ -29,6 +32,7 @@ public class TowerPlaceManager : MonoBehaviour
                 towerPreview.SetActive(false);
                 isTileSelected = false;
             }
+
         }
     }
     private void OnEnable()
@@ -45,6 +49,7 @@ public class TowerPlaceManager : MonoBehaviour
 
     public void StartPlacingTower(GameObject towerPrefab)
     {
+
         if ((currentTowerToSpawn != towerPrefab))
         {
             isPlacingTower = true;
@@ -56,14 +61,12 @@ public class TowerPlaceManager : MonoBehaviour
 
             towerPreview = Instantiate(currentTowerToSpawn);
 
-            
             var baseTowerScript = towerPreview.GetComponent<Tower>();
             if (baseTowerScript != null)
             {
                 baseTowerScript.enabled = false;
             }
 
-            
             var bladeTowerScript = towerPreview.GetComponent<BladeTower>();
             if (bladeTowerScript != null)
             {
@@ -72,13 +75,25 @@ public class TowerPlaceManager : MonoBehaviour
 
         }
 
+
     }
 
 
     private void OnPlaceTower(InputAction.CallbackContext context)
     {
-        if (isPlacingTower && isTileSelected)
+        if (EventSystem.current.IsPointerOverGameObject())
         {
+            return;
+        }
+        if (GameManager.Instance.coins < towerCost)
+        {
+            Debug.Log("Not enough coins to place tower.");
+            return;
+        }
+
+        else if (isPlacingTower && isTileSelected)
+        {
+            GameManager.Instance.SpendCoins(towerCost);
             isPlacingTower = false;
             Vector3 spawnPosition = towerPreview.transform.position;
             Instantiate(currentTowerToSpawn, spawnPosition, Quaternion.identity);
@@ -87,3 +102,5 @@ public class TowerPlaceManager : MonoBehaviour
         }
     }
 }
+
+

@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireCooldown: 4
-  projectilePrefab: {fileID: 500042936275251588, guid: aff6c0c936254d041bf01b4e6460d4f8, type: 3}
+  projectilePrefab: {fileID: 6547636677584007407, guid: 0a8aa045ef0bce049bb9c48b36df6c3c, type: 3}
   towerWeaponRotate: {fileID: 2452060575170847416}
   rotationSpeed: 10
   arrowSpawnPoint: {fileID: 4034989076041793521}

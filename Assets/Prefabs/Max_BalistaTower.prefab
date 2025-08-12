@@ -174,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dae0c71bdecabd549835783f650b9874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireCooldown: 2
-  projectilePrefab: {fileID: 500042936275251588, guid: aff6c0c936254d041bf01b4e6460d4f8, type: 3}
+  fireCooldown: 0.25
+  projectilePrefab: {fileID: 610163944168990810, guid: f9dfe54de69874046b9a1690c011c348, type: 3}
   towerWeaponRotate: {fileID: 1669023147921923693}
   rotationSpeed: 10
   arrowSpawnPoint: {fileID: 203188114662572836}

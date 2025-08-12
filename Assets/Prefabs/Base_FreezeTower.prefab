@@ -213,6 +213,7 @@ MonoBehaviour:
   towerWeaponRotate: {fileID: 7036698055802715400}
   rotationSpeed: 10
   arrowSpawnPoint: {fileID: 8957985964976064332}
+  towerCost: 20
   freezeEffect: {fileID: 0}
 --- !u!1 &7704690520814856114
 GameObject:

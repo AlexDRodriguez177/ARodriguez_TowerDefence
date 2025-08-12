@@ -1,6 +1,5 @@
-using TMPro.EditorUtilities;
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public abstract class Tower : MonoBehaviour
 {
@@ -13,7 +12,6 @@ public abstract class Tower : MonoBehaviour
     [SerializeField] protected Transform towerWeaponRotate;
     [SerializeField] protected float rotationSpeed = 10f;
     [SerializeField] protected Transform arrowSpawnPoint;
-
 
     protected virtual void Update()
     {
@@ -96,6 +94,4 @@ public abstract class Tower : MonoBehaviour
             enemiesInRange.Remove(enemy);
         }
     }
-
-
 }

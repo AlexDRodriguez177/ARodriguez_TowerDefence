@@ -5,6 +5,7 @@ public class BladeTower : MonoBehaviour
     [SerializeField] private int bladeDamage;
     [SerializeField] private float timeBeforeNextStrike = 1f;
     private bool canDealDamage = true;
+    public int cost;
     private void OnTriggerEnter(Collider other)
     {
         if (!canDealDamage)

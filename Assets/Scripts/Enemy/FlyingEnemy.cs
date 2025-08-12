@@ -4,8 +4,6 @@ using UnityEngine;
 public class FlyingEnemy : Enemy
 {
     [SerializeField] private float flyingSpeed = 5f;
-    [SerializeField] private float flyingHeight = 5f;
-    [SerializeField] private float rotationSpeed = 50f;
     protected override void Awake()
     {    
         base.Awake();
